@@ -1,0 +1,79 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+        {
+            "type": "extensionHost",
+            "request": "launch",
+            "name": "Iniciar extensión",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "preLaunchTask": "npm"
+        },
+        {
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "name": "nodemon",
+            "program": "${workspaceFolder}/app.js",
+            "request": "launch",
+            "restart": true,
+            "runtimeExecutable": "nodemon",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        },
+		{
+			"name": "Run PG Extension",
+			"type": "extensionHost",
+			"request": "launch",
+			"runtimeExecutable": "${execPath}",
+			"args": [
+				"${workspaceFolder}/../../test/project.code-workspace",
+				"--extensionDevelopmentPath=${workspaceFolder}"
+			],
+			"outFiles": [
+				"${workspaceFolder}/../../dist/*.js",
+				"${workspaceFolder}/out/**/*.js",
+			],
+			
+			"sourceMaps": true,
+			"preLaunchTask": "npm: dev",
+			"env": {
+				"SQLTOOLS_DEBUG_PORT_LS": "6099"
+			}
+		},
+		{
+			"type": "node",
+			"request": "attach",
+			"name": "Attach SQLTools LS",
+			"port": 6099,
+			"restart": true,
+			"sourceMapPathOverrides": {
+				"src/*": "${workspaceRoot}/src/*",
+			},
+			"sourceMaps": true,
+			"protocol": "inspector",
+			"timeout": 100000,
+			"outFiles": [
+				"${workspaceFolder}/out/**/*.js"
+			],
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+		}
+	],
+	"compounds": [
+		{
+			"name": "Run PG Driver Ext and Attach LS",
+			"configurations": [
+				"Attach SQLTools LS",
+				"Run PG Extension"
+			]
+		}
+	]
+}

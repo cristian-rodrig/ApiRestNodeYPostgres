@@ -1,0 +1,17 @@
+{
+  "name": "api-rest-node-postgress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.3.3"
+  },
+  "dev": "cross-env NODE_ENV=development cross-env DEBUG=sbm* ../src/node_modules/nodemon/bin/nodemon.js ../src/app.js"
+  
+}

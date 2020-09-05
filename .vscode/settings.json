@@ -1,0 +1,26 @@
+
+
+{
+    "git.ignoreLimitWarning": true,
+    
+    "files.exclude": {
+        "out": false // set this to true to hide the "out" folder with the compiled JS files
+    },
+    "search.exclude": {
+        "out": true // set this to false to include "out" folder in search results
+    },
+    // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
+    "typescript.tsc.autoDetect": "off",
+    "sqltools.connections": [
+        {
+            "database": "firstapi",
+            "driver": "PostgreSQL",
+            "name": "postgres_db",
+            "password": "cris9430",
+            "port": 5432,
+            "previewLimit": 50,
+            "server": "localhost",
+            "username": "postgres"
+        }
+    ]
+}
